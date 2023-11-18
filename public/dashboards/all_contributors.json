@@ -18,6 +18,15 @@
 			"id": "brian",
 			"name": "海獺",
 			"link": "https://brianchou452.github.io/"
+		},
+		"nick": {
+			"id": "nick",
+			"name": "nicklas",
+			"link": "https://github.com/nickchengtw"
+		},
+		"yiting": {
+			"id": "yiting",
+			"name": "宜庭呦"
 		}
 	}
 }
