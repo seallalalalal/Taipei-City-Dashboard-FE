@@ -4219,7 +4219,7 @@
 				"https://data.taipei/dataset/detail?id=d5c0656b-5250-4179-a491-c94daa56ef2c"
 			],
 			"tags": [],
-			"contributors": ["sHinN"]
+			"contributors": ["shinn"]
 		},
 		"149": {
 			"id": 149,
@@ -4304,6 +4304,31 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+		"230": {
+			"id": 230,
+			"index": "dead_rate",
+			"history_data": false,
+			"map_config": null,
+			"chart_config": {
+				"color": ["#FD5696", "#00A9E0"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "人次"
+			},
+			"name": "新生兒死亡率",
+			"source": "台北大數據中心",
+			"time_from": "1971-01-01T23:59:59+08:00",
+			"time_to": "2021-12-31T23:59:59+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "顯示近兩年每月的刑案統計資訊",
+			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=2e6dd7df-aaca-49d2-92c4-435fca1894fd"
+			],
+			"tags": [],
+			"contributors": ["shinn"]
 		}
 	}
 }
