@@ -7,6 +7,7 @@ import { computed } from "vue";
 
 const props = defineProps(["chart_config", "activeChart", "series"]);
 const count = ref(1);
+const isNextClick = ref(undefined);
 const parsedSeries = computed(() => {
 	const number = props.series[count.value].data * 100;
 	return fill1In2d(number);
@@ -37,12 +38,22 @@ function fill1In2d(n) {
 
 function increaseCount() {
 	count.value++;
+	isNextClick.value = true;
 }
 function decreaseCount() {
 	count.value--;
+	isNextClick.value = false;
 }
 function showOrHideButton(isShow) {
 	return isShow ? "show" : "hide";
+}
+function nextOrPrevAnim() {
+	if (isNextClick === undefined) {
+		return "chartcontainer";
+	}
+	return isNextClick
+		? "chartcontainer flip-vertical-left"
+		: "chartcontainer flip-vertical-right";
 }
 </script>
 
@@ -91,12 +102,14 @@ function showOrHideButton(isShow) {
 <template>
 	<div v-if="activeChart === 'HundredChart'" class="hundredchart">
 		<div>
-			每 100 {{ props.series[count - 1].unit
-			}}{{ props.series[count - 1].name }} 就有
-			{{ series[count].data * 100 }} {{ props.series[count].unit
-			}}{{ props.series[count].name }}
+			每 100 {{ props.chart_config.unit
+			}}{{ props.chart_config.categories[count - 1] }}
 		</div>
-		<div class="chartcontainer">
+		<div>
+			就有 {{ series[count].data * 100 }} {{ props.chart_config.unit
+			}}{{ props.chart_config.categories[count] }}
+		</div>
+		<div :class="nextOrPrevAnim()">
 			<button @click="decreaseCount" :class="showOrHideButton(count > 1)">
 				<img src="../../assets/images/hundredicon/arrowLeft.svg" />
 			</button>
