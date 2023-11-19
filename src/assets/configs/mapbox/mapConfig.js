@@ -239,6 +239,9 @@ export const maplayerCommonPaint = {
 		"line-dasharray": [2, 4],
 	},
 	symbol: {},
+	heatmap: {
+		
+	},
 };
 
 // Layout Properties
@@ -358,4 +361,5 @@ export const maplayerCommonLayout = {
 			60,
 		],
 	},
+	heatmap: {},
 };
