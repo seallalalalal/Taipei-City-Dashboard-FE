@@ -4637,6 +4637,102 @@
 			],
 			"tags": [],
 			"contributors": ["yiting"]
+		},
+		"600": {
+			"id": 600,
+			"index": "nursery_usage",
+			"map_config": [
+				{
+					"index": "nursery_usage",
+					"paint": {
+						"fill-extrusion-color": [
+							"match",
+							["get", "PTNAME"],
+							["臺北市北投區"],
+							"#0070bd",
+							["臺北市士林區"],
+							"#FD5696",
+							["臺北市內湖區"],
+							"#008659",
+							["臺北市中山區"],
+							"#e3002c",
+							["臺北市大同區"],
+							"#c48c31",
+							["臺北市松山區"],
+							"#ffdb00",
+							["臺北市南港區"],
+							"#fff495",
+							["臺北市中正區"],
+							"#ddb11f",
+							["臺北市信義區"],
+							"#ffdb00",
+							["臺北市萬華區"],
+							"#e3863a",
+							["臺北市大安區"],
+							"#a65818",
+							["臺北市文山區"],
+							"#00A9E0",
+							"#505050"
+						],
+						"fill-extrusion-opacity": 0.8,
+						"fill-extrusion-height": [
+							"interpolate",
+							["linear"],
+							["to-number", ["get", "height"]],
+							0,
+							0,
+							200000,
+							200000
+						]
+					},
+					"property": [
+						{
+							"key": "district",
+							"name": "區域"
+						},
+						{
+							"key": "capacity",
+							"name": "核定招收名額"
+						},
+						{
+							"key": "predicted_requirement",
+							"name": "預估托嬰需求人數"
+						},
+						{
+							"key": "actual_requirement",
+							"name": "需求人數"
+						}
+					],
+					"type": "fill-extrusion",
+					"title": "托嬰中心需求量預估"
+				}
+			],
+			"chart_config": {
+				"types": ["MapLegend"]
+			},
+			"chart_data": [
+				{
+					"color": "#c87a74", 
+					"type": "fill",
+					"name": "需求量預估",
+					"value": null,
+					"unit": null
+				}
+			],
+			"name": "托嬰中心需求量預估",
+			"source": "主計處",
+			"time_from": "2021-01-01T00:00:00+08:00",
+			"time_to": "2021-12-31T00:00:00+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=266f4210-93e1-4d8c-9cff-055776db9fa6"
+			],
+			"tags": [],
+			"contributors": ["brian"]
 		}
 	}
 }
