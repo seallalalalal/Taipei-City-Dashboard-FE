@@ -4194,14 +4194,8 @@
 			"map_config": null,
 			"chart_config": {
 				"types": ["HundredChart"],
-				"color": [
-					"#FFFFCC",
-					"#e7d198",
-					"#d1a26c",
-					"#b9734a",
-					"#9f4333",
-					"#800026"
-				],
+				"icons": ["wc", "woman", "female", "attach_money"],
+				"color": ["#FFFFCC", "#e7d198", "#d1a26c", "#b9734a"],
 				"unit": "個",
 				"categories": [
 					"人",
@@ -4211,6 +4205,7 @@
 				],
 				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
 			},
+
 			"name": "如果台北市總共一百個人",
 			"source": "資訊局",
 			"time_from": "2023-07-28T00:00:00+08:00",

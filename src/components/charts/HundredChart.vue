@@ -8,10 +8,13 @@ import { computed } from "vue";
 const props = defineProps(["chart_config", "activeChart", "series"]);
 const count = ref(1);
 const isNextClick = ref(undefined);
+const iconColor = ref(props.chart_config.color[count.value - 1]);
 const parsedSeries = computed(() => {
 	const number = props.series[0].data[count.value] * 100;
 	return fill1In2d(number);
 });
+
+console.log(props.chart_config.color[0]);
 
 function fill1In2d(n) {
 	// Create a 10x10 2D array in JavaScript
@@ -69,6 +72,12 @@ function nextOrPrevAnim() {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
+
+	* span {
+		font-family: var(--font-icon);
+		width: 15px;
+		height: 15px;
+	}
 	.chartcontainer {
 		display: flex;
 		flex-direction: row;
@@ -159,24 +168,30 @@ function nextOrPrevAnim() {
 					:key="`${row}-${i}`"
 				>
 					<div v-for="(item, j) in row" :key="`item-${j}`">
-						<img
-							v-if="item === 0"
-							src="../../assets/images/hundredicon/human.svg"
-							:alt="`numerator-${i}-${j}-${item}`"
-							class="img"
-						/>
-						<img
+						<span
+							v-if="item === 1"
+							:style="{
+								color: props.chart_config.color[count - 1],
+							}"
+						>
+							{{ props.chart_config.icons[count] }}
+						</span>
+						<span
 							v-else
-							src="../../assets/images/hundredicon/girls.svg"
-							:alt="`denominator-${i}-${j}`"
-							class="img"
-						/>
+							:style="{
+								color: props.chart_config.color[count],
+							}"
+						>
+							{{ props.chart_config.icons[count - 1] }}
+						</span>
 					</div>
 				</div>
 			</div>
 			<button
 				@click="increaseCount"
-				:class="showOrHideButton(count < props.series[0].data.length - 1)"
+				:class="
+					showOrHideButton(count < props.series[0].data.length - 1)
+				"
 			>
 				<img src="../../assets/images/hundredicon/arrowRight.svg" />
 			</button>
