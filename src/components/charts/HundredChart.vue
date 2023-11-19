@@ -9,7 +9,7 @@ const props = defineProps(["chart_config", "activeChart", "series"]);
 const count = ref(1);
 const isNextClick = ref(undefined);
 const parsedSeries = computed(() => {
-	const number = props.series[count.value].data * 100;
+	const number = props.series[0].data[count.value] * 100;
 	return fill1In2d(number);
 });
 
@@ -106,7 +106,7 @@ function nextOrPrevAnim() {
 			}}{{ props.chart_config.categories[count - 1] }}
 		</div>
 		<div>
-			就有 {{ series[count].data * 100 }} {{ props.chart_config.unit
+			就有 {{ series[0].data[count] * 100 }} {{ props.chart_config.unit
 			}}{{ props.chart_config.categories[count] }}
 		</div>
 		<div :class="nextOrPrevAnim()">
@@ -137,7 +137,7 @@ function nextOrPrevAnim() {
 			</div>
 			<button
 				@click="increaseCount"
-				:class="showOrHideButton(count < props.series.length - 1)"
+				:class="showOrHideButton(count < props.series[0].data.length - 1)"
 			>
 				<img src="../../assets/images/hundredicon/arrowRight.svg" />
 			</button>
