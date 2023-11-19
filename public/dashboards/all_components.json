@@ -4564,44 +4564,7 @@
 		"365": {
 			"id": 365,
 			"index": "sick",
-			"map_config": [
-				{
-					"index": "sick",
-					"paint": {
-						"fill-color": [
-							"match",
-							["get", "壅塞程度"],
-							"壅塞",
-							"#EC4037",
-							"車多",
-							"#ff8c1a",
-							"順暢",
-							"#4dd97a",
-							"#ccc"
-						]
-					},
-					"property": [
-						{
-							"key": "snippet",
-							"name": "路段代號"
-						},
-						{
-							"key": "壅塞程度",
-							"name": "壅塞程度"
-						},
-						{
-							"key": "description",
-							"name": "描述"
-						},
-						{
-							"key": "update_at",
-							"name": "更新時間"
-						}
-					],
-					"type": "fill",
-					"title": "111年嬰兒主要死亡原因"
-				}
-			],
+			"map_config": null,
 			"history_data": true,
 			"history_data_color": ["#EC4037", "#BBB"],
 			"chart_config": {
