@@ -4266,7 +4266,7 @@
 			"index": "kids_center_usage",
 			"history_data": true,
 			"chart_config": {
-				"color": ["#9c7a3e", "#7febd0", "#8ce8ff"],
+				"color": ["#be3455", "#6667ab", "#8ce8ff"],
 				"types": ["ColumnChart"],
 				"unit": "人次",
 				"categories": [
@@ -4386,7 +4386,7 @@
 			"history_data": false,
 			"map_config": null,
 			"chart_config": {
-				"color": ["#FD5696", "#00A9E0"],
+				"color": ["#F5DF4D", "#939597"],
 				"types": ["TimelineSeparateChart"],
 				"unit": "人次"
 			},
@@ -4608,17 +4608,14 @@
 			"history_data_color": ["#EC4037", "#BBB"],
 			"chart_config": {
 				"color": [
-					"#112233",
-					"#123456",
-					"#234567",
-					"#345678",
-					"#456789",
-					"#56789a",
-					"#6789ab",
-					"#789abc",
-					"#89abcd",
-					"#9abcde",
-					"#abcdef"
+					"#000000",
+					"#222222",
+					"#444444",
+					"#666666",
+					"#888888",
+					"#aaaaaa",
+					"#cccccc",
+					"#eeeeee"
 				],
 				"types": ["DonutChart", "BarChart"],
 				"unit": "%"
@@ -4712,7 +4709,7 @@
 			},
 			"chart_data": [
 				{
-					"color": "#c87a74", 
+					"color": "#c87a74",
 					"type": "fill",
 					"name": "需求量預估",
 					"value": null,
