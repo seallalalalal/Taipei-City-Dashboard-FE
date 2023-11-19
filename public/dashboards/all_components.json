@@ -4730,6 +4730,31 @@
 			],
 			"tags": [],
 			"contributors": ["brian"]
+		},
+		"520": {
+			"id": 520,
+			"index": "patrol_criminalcase",
+			"history_data": false,
+			"map_config": null,
+			"chart_config": {
+				"color": ["#FD5696", "#00A9E0"],
+				"types": ["TimelineSeparateChart"],
+				"unit": "件"
+			},
+			"name": "所得與生育",
+			"source": "警察局",
+			"time_from": "2016-01-01T23:59:59+08:00",
+			"time_to": "2022-12-01T23:59:59+08:00",
+			"update_freq": 0.1,
+			"update_freq_unit": "year",
+			"short_desc": "顯示近兩年每月的刑案統計資訊",
+			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
+			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"links": [
+				"https://data.taipei/dataset/detail?id=dc7e246a-a88e-42f8-8cd6-9739209af774"
+			],
+			"tags": [],
+			"contributors": ["yiting"]
 		}
 	}
 }
