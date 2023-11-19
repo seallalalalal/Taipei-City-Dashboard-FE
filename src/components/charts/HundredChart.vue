@@ -38,22 +38,27 @@ function fill1In2d(n) {
 
 function increaseCount() {
 	count.value++;
+	isNextClick.value = undefined;
 	isNextClick.value = true;
 }
 function decreaseCount() {
 	count.value--;
+	isNextClick.value = undefined;
 	isNextClick.value = false;
 }
 function showOrHideButton(isShow) {
 	return isShow ? "show" : "hide";
 }
 function nextOrPrevAnim() {
-	if (isNextClick === undefined) {
+	console.log({ isNextClick });
+	if (isNextClick.value === undefined) {
+		console.log("chartcontainer");
 		return "chartcontainer";
 	}
-	return isNextClick
-		? "chartcontainer flip-vertical-left"
-		: "chartcontainer flip-vertical-right";
+	console.log("chartcontainer with anim");
+	return isNextClick.value
+		? "chartcontainer flip-in-ver-left"
+		: "chartcontainer flip=in-ver-right";
 }
 </script>
 
@@ -73,6 +78,40 @@ function nextOrPrevAnim() {
 				width: 30px;
 				height: 30px;
 			}
+		}
+	}
+	.flip-in-ver-left {
+		animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+			both;
+	}
+	.flip-in-ver-right {
+		animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+			both;
+	}
+
+	@keyframes flip-in-ver-left {
+		0% {
+			-webkit-transform: rotateY(80deg);
+			transform: rotateY(80deg);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: rotateY(0);
+			transform: rotateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes flip-in-ver-right {
+		0% {
+			-webkit-transform: rotateY(-80deg);
+			transform: rotateY(-80deg);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: rotateY(0);
+			transform: rotateY(0);
+			opacity: 1;
 		}
 	}
 	.chart {
