@@ -71,12 +71,21 @@ function nextOrPrevAnim() {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 5px;
+	padding-top: 10px;
 
 	* span {
 		font-family: var(--font-icon);
 		width: 15px;
 		height: 15px;
+	}
+	.slogan {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		max-width: 80%;
+		align-items: center;
+		justify-content: center;
 	}
 	.chartcontainer {
 		display: flex;
@@ -149,13 +158,16 @@ function nextOrPrevAnim() {
 
 <template>
 	<div v-if="activeChart === 'HundredChart'" class="hundredchart">
-		<div>
-			每 100 {{ props.chart_config.unit
-			}}{{ props.chart_config.categories[count - 1] }}
-		</div>
-		<div>
-			就有 {{ series[0].data[count] * 100 }} {{ props.chart_config.unit
-			}}{{ props.chart_config.categories[count] }}
+		<div class="slogan">
+			<div>
+				每 100 {{ props.chart_config.unit
+				}}{{ props.chart_config.categories[count - 1] }}
+			</div>
+			<div>
+				就有 {{ series[0].data[count] * 100 }}
+				{{ props.chart_config.unit
+				}}{{ props.chart_config.categories[count] }}
+			</div>
 		</div>
 		<div :class="nextOrPrevAnim()">
 			<button @click="decreaseCount" :class="showOrHideButton(count > 1)">

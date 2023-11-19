@@ -4193,9 +4193,9 @@
 			"index": "test_hundred_chart",
 			"map_config": null,
 			"chart_config": {
-				"types": ["HundredChart"],
+				"types": ["HundredChart", "FunnelChart"],
 				"icons": ["wc", "woman", "female", "attach_money"],
-				"color": ["#FFFFCC", "#e7d198", "#d1a26c", "#b9734a"],
+				"color": ["red", "blue", "yellow", "purple"],
 				"unit": "個",
 				"categories": [
 					"人",
