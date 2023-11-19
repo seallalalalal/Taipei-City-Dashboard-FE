@@ -1,58 +1,72 @@
 <script setup>
 import { ref } from "vue";
 
+const props = defineProps([
+	"chart_config",
+	"activeChart",
+	"series",
+	"map_config",
+]);
+
 const chartOptions = ref({
 	chart: {
 		type: "bar",
-		height: 350,
+		height: 300,
+		toolbar: false,
 	},
 	plotOptions: {
 		bar: {
 			borderRadius: 0,
 			horizontal: true,
-			barHeight: "80%",
 			isFunnel: true,
 		},
 	},
 	dataLabels: {
 		enabled: true,
 		formatter: function (val, opt) {
-			return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+			return (
+				opt.w.globals.labels[opt.dataPointIndex] +
+				":  " +
+				val +
+				props.chart_config.unit
+			);
 		},
 		dropShadow: {
 			enabled: true,
 		},
 	},
-	title: {
-		text: "Recruitment Funnel",
-		align: "center",
-	},
 	xaxis: {
-		categories: [
-			"Sourced",
-			"Screened",
-			"Assessed",
-			"HR Interview",
-			"Technical",
-			"Verify",
-			"Offered",
-			"Hired",
-		],
+		categories: props.chart_config.categories,
 	},
 	legend: {
 		show: false,
 	},
+	tooltip: {
+		custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+			const value = props.chart_config.useAbs
+				? Math.abs(series[seriesIndex][dataPointIndex])
+				: series[seriesIndex][dataPointIndex];
+			return (
+				'<div class="chart-tooltip">' +
+				"<h6>" +
+				w.globals.labels[dataPointIndex] +
+				"</h6>" +
+				"<span>" +
+				value +
+				` ${props.chart_config.unit}` +
+				"</span>" +
+				"</div>"
+			);
+		},
+		followCursor: true,
+	},
 });
-
-const chartHeight = 350;
-
 </script>
 
 <template>
 	<div v-if="activeChart === 'FunnelChart'">
 		<apexchart
 			width="100%"
-			:height="chartHeight"
 			type="bar"
 			:options="chartOptions"
 			:series="series"
