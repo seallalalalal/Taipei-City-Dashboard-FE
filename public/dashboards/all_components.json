@@ -4302,6 +4302,7 @@
 		"301": {
 			"id": 301,
 			"index": "test 301",
+			"history_data": false,
 			"chart_config": {
 				"types": ["FunnelChart"],
 				"align": "center",
