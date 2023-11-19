@@ -4193,18 +4193,19 @@
 			"index": "test_hundred_chart",
 			"map_config": null,
 			"chart_config": {
-				"types": ["HundredChart"],
-				"color": [
-					"#FFFFCC",
-					"#e7d198",
-					"#d1a26c",
-					"#b9734a",
-					"#9f4333",
-					"#800026"
+				"types": ["HundredChart", "FunnelChart"],
+				"icons": ["wc", "woman", "female", "attach_money"],
+				"color": ["red", "blue", "yellow", "purple"],
+				"unit": "個",
+				"categories": [
+					"人",
+					"女生",
+					"不想生小孩",
+					"擔心經濟上無法負擔"
 				],
-				"unit": "個網格",
 				"map_filter": ["category", ["極低", "低", "中低", "中", "高"]]
 			},
+
 			"name": "如果台北市總共一百個人",
 			"source": "資訊局",
 			"time_from": "2023-07-28T00:00:00+08:00",
@@ -4245,20 +4246,17 @@
 				}
 			},
 			"history_data": false,
-			"source": "交通局",
-			"time_from": "2023-05-11T08:00:00+08:00",
+			"source": "主計處",
+			"time_from": "2023-11-14T08:00:00+08:00",
 			"time_to": null,
-			"update_freq": 10,
+			"update_freq": null,
 			"update_freq_unit": "minute",
-			"name": "各年齡出生率",
-			"short_desc": "",
-			"long_desc": "",
-			"use_case": "",
+			"name": "各年齡層生子狀況",
+			"short_desc": "以類人口金字塔的方式呈現男女成為父母之年齡",
+			"long_desc": "以類人口金字塔的方式呈現男女成為父母之年齡，提供父母年齡結構概況。",
+			"use_case": "為規劃鼓勵生育政策提供年齡資訊，依照不同年齡結構提出最適當的補助。",
 			"tags": [],
-			"links": [
-				"https://tuic.gov.taipei/youbike",
-				"https://github.com/tpe-doit/YouBike-Optimization"
-			],
+			"links": ["https://data.gov.tw/dataset/132341"],
 			"contributors": ["shinn", "brian"]
 		},
 		"149": {
@@ -4266,7 +4264,7 @@
 			"index": "kids_center_usage",
 			"history_data": true,
 			"chart_config": {
-				"color": ["#be3455", "#6667ab", "#8ce8ff"],
+				"color": ["#6667ab", "#be3455", "#8ce8ff"],
 				"types": ["ColumnChart"],
 				"unit": "人次",
 				"categories": [
@@ -4286,7 +4284,7 @@
 			},
 			"name": "親子館服務使用量",
 			"source": "社會局",
-			"time_from": "2015-01-01T00:00:00+08:00",
+			"time_from": "2022-07-25T11:11:25+08:00",
 			"time_to": null,
 			"update_freq": null,
 			"update_freq_unit": null,
@@ -4396,9 +4394,9 @@
 			"time_to": "2021-12-31T23:59:59+08:00",
 			"update_freq": null,
 			"update_freq_unit": null,
-			"short_desc": "顯示近兩年每月的刑案統計資訊",
-			"long_desc": "顯示近兩年每月的刑案統計資訊，資料來源為台北市主計處開放資料，每月更新。",
-			"use_case": "藉由掌握台北市刑事案件近2年的統計資訊，我們可以瞭解案件的增減趨勢及相關特徵，有助於制定更有效的治安策略。",
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
 			"links": [
 				"https://data.taipei/dataset/detail?id=2e6dd7df-aaca-49d2-92c4-435fca1894fd"
 			],
@@ -4520,12 +4518,12 @@
 				]
 			},
 			"name": "經濟壓力對女性生育意願之影響",
-			"source": "資訊局",
-			"time_from": "2023-09-28T00:00:00+08:00",
+			"source": "社會局",
+			"time_from": "2021-09-28T00:00:00+08:00",
 			"time_to": null,
 			"short_desc": "",
-			"long_desc": "全市由250公尺見方的網格組成，依據是否已設站、鄰近是否有站點及土地使用等條件，將各網格分為7大類，資料來源為大數據中心研究，更新頻率不定期。",
-			"use_case": "本組件可讓您快速查看各區域的YouBike設站情況。這有助於您了解哪些區域已提供YouBike服務；哪些因為土地或地形限制無法設站；和哪些地區目前未設站但具有設站潛能。",
+			"long_desc": "",
+			"use_case": "",
 			"links": [
 				"https://dosw.gov.taipei/News_Content.aspx?n=E2018C5392F991DF&s=4AA5B916B574E7BA"
 			],
@@ -4566,71 +4564,37 @@
 		"365": {
 			"id": 365,
 			"index": "sick",
-			"map_config": [
-				{
-					"index": "sick",
-					"paint": {
-						"fill-color": [
-							"match",
-							["get", "壅塞程度"],
-							"壅塞",
-							"#EC4037",
-							"車多",
-							"#ff8c1a",
-							"順暢",
-							"#4dd97a",
-							"#ccc"
-						]
-					},
-					"property": [
-						{
-							"key": "snippet",
-							"name": "路段代號"
-						},
-						{
-							"key": "壅塞程度",
-							"name": "壅塞程度"
-						},
-						{
-							"key": "description",
-							"name": "描述"
-						},
-						{
-							"key": "update_at",
-							"name": "更新時間"
-						}
-					],
-					"type": "fill",
-					"title": "111年嬰兒主要死亡原因"
-				}
-			],
+			"map_config": null,
 			"history_data": true,
 			"history_data_color": ["#EC4037", "#BBB"],
 			"chart_config": {
 				"color": [
 					"#000000",
+					"#111111",
 					"#222222",
+					"#333333",
 					"#444444",
+					"#555555",
 					"#666666",
+					"#777777",
 					"#888888",
-					"#aaaaaa",
-					"#cccccc",
-					"#eeeeee"
+					"#999999",
+					"#aaaaaa"
 				],
-				"types": ["DonutChart", "BarChart"],
+				"types": ["BarChart", "DonutChart"],
 				"unit": "%"
 			},
 			"name": "嬰兒主要死亡原因",
-			"source": "交通局",
+			"source": "衛福部",
 			"time_from": "2023-06-02T00:00:00+08:00",
 			"time_to": null,
-			"update_freq": 10,
-			"update_freq_unit": "minute",
-			"short_desc": "顯示當前全市道路暢通情況",
-			"long_desc": "顯示當前全市道路暢通情況，以主要幹道車速偵測辨別壅塞程度，資料來源為台北市交通局公開資料，每10分鐘更新。",
-			"use_case": "整體道路暢通情況反映了交通繁忙程度，可以透過與過去平均對比判斷當下交通是否出現異常情況。",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
 			"links": [
-				"https://data.taipei/dataset/detail?id=e57afe7f-3c9e-4f31-9208-eed859a92600"
+				"https://www.mohw.gov.tw/dl-13344-a937e593-b752-4706-8bca-dbd4aa2dd7fc.html"
 			],
 			"tags": [],
 			"contributors": ["yiting"]
@@ -4755,6 +4719,99 @@
 			],
 			"tags": [],
 			"contributors": ["yiting"]
+     },
+		"601": {
+			"id": 601,
+			"index": "nursery_usage_heatmap",
+			"map_config": [
+				{
+					"index": "public_nursery",
+					"paint": {
+						"heatmap-weight": [
+							"interpolate",
+							["linear"],
+							["to-number", ["get", "capacity"]],
+							0,
+							0,
+							40,
+							1
+						],
+						"heatmap-intensity": 0.8,
+						"heatmap-opacity": 0.8,
+						"heatmap-radius": [
+							"interpolate",
+							["linear"],
+							["zoom"],
+							0,
+							30,
+							10,
+							20
+						]
+					},
+					"property": [
+						{
+							"key": "type",
+							"name": "機構類型"
+						},
+						{
+							"key": "address",
+							"name": "地址"
+						},
+						{
+							"key": "capacity",
+							"name": "核定收托人數"
+						},
+						{
+							"key": "rating",
+							"name": "評鑑結果"
+						},
+						{
+							"key": "gov_supported",
+							"name": "是否準公共化"
+						},
+						{
+							"key": "register_cost",
+							"name": "註冊費"
+						},
+						{
+							"key": "monthly_cost",
+							"name": "月費"
+						},
+						{
+							"key": "avg_monthly_cost",
+							"name": "平均月費"
+						}
+					],
+					"type": "heatmap",
+					"title": "托嬰中心服務涵蓋範圍"
+				}
+			],
+			"chart_config": {
+				"types": ["MapLegend"]
+			},
+			"chart_data": [
+				{
+					"color": "#c87a74",
+					"type": "fill",
+					"name": "核定收托人數",
+					"value": null,
+					"unit": null
+				}
+			],
+			"name": "托嬰中心服務涵蓋範圍",
+			"source": "主計處",
+			"time_from": "2021-01-01T00:00:00+08:00",
+			"time_to": "2021-12-31T00:00:00+08:00",
+			"update_freq": null,
+			"update_freq_unit": null,
+			"short_desc": "",
+			"long_desc": "",
+			"use_case": "",
+			"links": [
+				"https://data.taipei/dataset/detail?id=266f4210-93e1-4d8c-9cff-055776db9fa6"
+			],
+			"tags": [],
+			"contributors": ["brian"]
 		}
 	}
 }

@@ -7,10 +7,14 @@ import { computed } from "vue";
 
 const props = defineProps(["chart_config", "activeChart", "series"]);
 const count = ref(1);
+const isNextClick = ref(undefined);
+const iconColor = ref(props.chart_config.color[count.value - 1]);
 const parsedSeries = computed(() => {
-	const number = props.series[count.value].data * 100;
+	const number = props.series[0].data[count.value] * 100;
 	return fill1In2d(number);
 });
+
+console.log(props.chart_config.color[0]);
 
 function fill1In2d(n) {
 	// Create a 10x10 2D array in JavaScript
@@ -37,12 +41,27 @@ function fill1In2d(n) {
 
 function increaseCount() {
 	count.value++;
+	isNextClick.value = undefined;
+	isNextClick.value = true;
 }
 function decreaseCount() {
 	count.value--;
+	isNextClick.value = undefined;
+	isNextClick.value = false;
 }
 function showOrHideButton(isShow) {
 	return isShow ? "show" : "hide";
+}
+function nextOrPrevAnim() {
+	console.log({ isNextClick });
+	if (isNextClick.value === undefined) {
+		console.log("chartcontainer");
+		return "chartcontainer";
+	}
+	console.log("chartcontainer with anim");
+	return isNextClick.value
+		? "chartcontainer flip-in-ver-left"
+		: "chartcontainer flip=in-ver-right";
 }
 </script>
 
@@ -52,7 +71,22 @@ function showOrHideButton(isShow) {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 10px;
+	gap: 5px;
+	padding-top: 10px;
+
+	* span {
+		font-family: var(--font-icon);
+		width: 15px;
+		height: 15px;
+	}
+	.slogan {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		max-width: 80%;
+		align-items: center;
+		justify-content: center;
+	}
 	.chartcontainer {
 		display: flex;
 		flex-direction: row;
@@ -62,6 +96,40 @@ function showOrHideButton(isShow) {
 				width: 30px;
 				height: 30px;
 			}
+		}
+	}
+	.flip-in-ver-left {
+		animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+			both;
+	}
+	.flip-in-ver-right {
+		animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+			both;
+	}
+
+	@keyframes flip-in-ver-left {
+		0% {
+			-webkit-transform: rotateY(80deg);
+			transform: rotateY(80deg);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: rotateY(0);
+			transform: rotateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes flip-in-ver-right {
+		0% {
+			-webkit-transform: rotateY(-80deg);
+			transform: rotateY(-80deg);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: rotateY(0);
+			transform: rotateY(0);
+			opacity: 1;
 		}
 	}
 	.chart {
@@ -90,13 +158,18 @@ function showOrHideButton(isShow) {
 
 <template>
 	<div v-if="activeChart === 'HundredChart'" class="hundredchart">
-		<div>
-			每 100 {{ props.series[count - 1].unit
-			}}{{ props.series[count - 1].name }} 就有
-			{{ series[count].data * 100 }} {{ props.series[count].unit
-			}}{{ props.series[count].name }}
+		<div class="slogan">
+			<div>
+				每 100 {{ props.chart_config.unit
+				}}{{ props.chart_config.categories[count - 1] }}
+			</div>
+			<div>
+				就有 {{ series[0].data[count] * 100 }}
+				{{ props.chart_config.unit
+				}}{{ props.chart_config.categories[count] }}
+			</div>
 		</div>
-		<div class="chartcontainer">
+		<div :class="nextOrPrevAnim()">
 			<button @click="decreaseCount" :class="showOrHideButton(count > 1)">
 				<img src="../../assets/images/hundredicon/arrowLeft.svg" />
 			</button>
@@ -107,24 +180,30 @@ function showOrHideButton(isShow) {
 					:key="`${row}-${i}`"
 				>
 					<div v-for="(item, j) in row" :key="`item-${j}`">
-						<img
-							v-if="item === 0"
-							src="../../assets/images/hundredicon/human.svg"
-							:alt="`numerator-${i}-${j}-${item}`"
-							class="img"
-						/>
-						<img
+						<span
+							v-if="item === 1"
+							:style="{
+								color: props.chart_config.color[count - 1],
+							}"
+						>
+							{{ props.chart_config.icons[count] }}
+						</span>
+						<span
 							v-else
-							src="../../assets/images/hundredicon/girls.svg"
-							:alt="`denominator-${i}-${j}`"
-							class="img"
-						/>
+							:style="{
+								color: props.chart_config.color[count],
+							}"
+						>
+							{{ props.chart_config.icons[count - 1] }}
+						</span>
 					</div>
 				</div>
 			</div>
 			<button
 				@click="increaseCount"
-				:class="showOrHideButton(count < props.series.length - 1)"
+				:class="
+					showOrHideButton(count < props.series[0].data.length - 1)
+				"
 			>
 				<img src="../../assets/images/hundredicon/arrowRight.svg" />
 			</button>
